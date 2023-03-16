@@ -1,0 +1,27 @@
+FROM openjdk:17-jdk-alpine as builder
+
+WORKDIR /app/ms-usuarios-server
+
+COPY ./pom.xml /app
+
+COPY ./ms-usuarios-server/.mvn ./.mvn
+
+COPY ./ms-usuarios-server/mvnw .
+
+COPY ./ms-usuarios-server/pom.xml .
+
+RUN ./mvnw clean package -Dmaven.test.skip  -Dmaven.main.skip -Dspring-boot.repackage.skip && rm -r ./target/
+
+COPY ./ms-usuarios-server/src ./src
+
+RUN ./mvnw clean package -DskipTests
+
+FROM openjdk:17-jdk-alpine
+
+WORKDIR /app
+
+COPY --from=builder /app/ms-usuarios-server/target/ms-usuarios-server-0.0.1-SNAPSHOT.jar .
+
+EXPOSE 8001
+
+ENTRYPOINT ["java", "-jar", "ms-usuarios-server-0.0.1-SNAPSHOT.jar"]

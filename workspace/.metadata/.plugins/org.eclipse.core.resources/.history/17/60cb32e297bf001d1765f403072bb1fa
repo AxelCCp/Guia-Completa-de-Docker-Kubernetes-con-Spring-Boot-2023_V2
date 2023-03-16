@@ -1,0 +1,14 @@
+	//SE ESPECIFICA LA VERSIÓN DE JDK 
+	FROM openjdk:12.0.2
+	
+	//AQUÍ VAN LAS  IMAGENES
+	WORKDIR /app
+	
+	//EL JAR SE COPIA EN /APP
+	COPY ./target/usuarios-0.0.1-SNAPSHOT.jar /app
+	
+	//PUERTO
+	EXPOSE 8001
+	
+	//COMANDO PARA GENERAR LA IMAGEN
+ENTRYPOINT ["java","-jar","usuarios-0.0.1-SNAPSHOT.jar"]
