@@ -24,4 +24,4 @@ COPY --from=builder /app/ms-usuarios-server/target/ms-usuarios-server-0.0.1-SNAP
 
 EXPOSE 8001
 
-ENTRYPOINT ["java", "-jar", "ms-usuarios-server-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "ms-usuarios-server-0.0.1-SNAPSHOT.jar"]
