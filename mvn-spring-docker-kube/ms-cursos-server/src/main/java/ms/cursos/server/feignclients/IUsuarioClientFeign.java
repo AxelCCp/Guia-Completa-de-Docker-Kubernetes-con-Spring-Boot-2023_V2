@@ -22,7 +22,11 @@ import ms.cursos.server.models.pojo.Usuario;
 //@FeignClient(name="usuarios",url="usuarios:8001")
 
 //2
-@FeignClient(name="ms-usuarios-server", url="localhost:8001")
+//@FeignClient(name="ms-usuarios-server", url="localhost:8001")
+
+
+
+@FeignClient(name="ms-usuarios-server", url="ms-usuarios-server:8001")
 public interface IUsuarioClientFeign {
 	
 	

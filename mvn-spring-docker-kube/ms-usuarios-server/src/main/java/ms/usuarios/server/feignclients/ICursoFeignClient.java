@@ -23,7 +23,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 //@FeignClient(name="cursos", url="cursos:8002")
 
 //4
-@FeignClient(name="ms-cursos-server", url="localhost:8002")
+//@FeignClient(name="ms-cursos-server", url="localhost:8002")
+
+
+@FeignClient(name="ms-cursos-server", url="ms-cursos-server:8002")
 public interface ICursoFeignClient {
 	
 	@DeleteMapping("/eliminar-curso-usuario/{id}")
