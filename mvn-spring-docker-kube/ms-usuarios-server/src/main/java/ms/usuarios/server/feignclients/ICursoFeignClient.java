@@ -18,15 +18,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 //@FeignClient(name="cursos", url="localhost:8002")   //PARA CONECTAR DIRECTAMENTE CON EL MICROSERVICIO.
 //2
 //@FeignClient(name="cursos", url="host.docker.internal:8002")
-
 //3
 //@FeignClient(name="cursos", url="cursos:8002")
-
 //4
 //@FeignClient(name="ms-cursos-server", url="localhost:8002")
+//@FeignClient(name="ms-cursos-server", url="ms-cursos-server:8002")
 
 
-@FeignClient(name="ms-cursos-server", url="ms-cursos-server:8002")
+@FeignClient(name="ms-cursos-server", url="${msvc.cursos.url}")
 public interface ICursoFeignClient {
 	
 	@DeleteMapping("/eliminar-curso-usuario/{id}")

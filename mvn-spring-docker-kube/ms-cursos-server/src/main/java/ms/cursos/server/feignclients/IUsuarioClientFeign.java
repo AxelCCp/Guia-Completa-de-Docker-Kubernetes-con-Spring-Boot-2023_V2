@@ -14,21 +14,17 @@ import ms.cursos.server.models.pojo.Usuario;
 
 //CLASE 70
 //1.- SE CAMBIA EL localhost POR EL NOMBRE QUE SE LE VA A DAR AL CONTENEDOR DOCKER. EN EL OTRO MICROSERVICIO SE HACE LO MISMO.
-
 //CLASE 156
 //2.-SE MODIFICA FEIGN PARA USAR SPRING CLOUD KUBERNETES
-
 //1
 //@FeignClient(name="usuarios",url="usuarios:8001")
-
 //2
 //@FeignClient(name="ms-usuarios-server", url="localhost:8001")
+//@FeignClient(name="ms-usuarios-server", url="ms-usuarios-server:8001")
 
 
-
-@FeignClient(name="ms-usuarios-server", url="ms-usuarios-server:8001")
+@FeignClient(name="ms-usuarios-server", url="${msvc.usuarios.url}")
 public interface IUsuarioClientFeign {
-	
 	
 	@GetMapping("/detalle/{id}")
 	public Usuario detalle (@PathVariable Long id);
